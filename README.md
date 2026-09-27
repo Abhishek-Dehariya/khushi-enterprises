@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Khushi Enterprises — Website
 
-## Getting Started
+Corporate website for **Khushi Enterprises**, a proprietor-led solar O&M and
+asset management firm based at Lohari Bujurg, Dhar (Madhya Pradesh), with
+additional solar installation, electrical, fabrication, civil and industrial
+execution capability. Built with Next.js (App Router), React, TypeScript and
+Tailwind CSS v4.
 
-First, run the development server:
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # development server on http://localhost:3000
+npm run lint     # eslint
+npm run build    # production build
+npm run start    # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Set the public site URL before deploying (used for canonical URLs, `sitemap.xml`,
+`robots.txt` and Open Graph tags):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cp .env.example .env.local
+# then set NEXT_PUBLIC_SITE_URL to the production domain
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Pages
 
-## Learn More
+| Route | Contents |
+| --- | --- |
+| `/` | O&M hero, Solar O&M & Asset Management scope register, asset management lifecycle, O&M expertise, business hierarchy, about preview, solar installation preview, featured projects, execution approach, clients, quality & safety, O&M CTA |
+| `/about` | Company overview, vision & mission, team & capability, nature of business |
+| `/services` | Seven execution scopes — solar O&M and asset management first — with capabilities and service index |
+| `/solar-om` | Solar O&M & Asset Management: operating lifecycle, ten scope areas, expertise, supporting capabilities |
+| `/solar-services` | Solar installation & commissioning, rooftop, ground mount, cleaning, structure work, execution process |
+| `/projects` | Project record with category filtering |
+| `/gallery` | Project photographs with lightbox |
+| `/clients` | Clients & project associations with the project record per organisation |
+| `/quality-safety` | Quality assurance, quality control, inspection, health & safety |
+| `/contact` | Contact details, map, enquiry form |
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/                    routes (App Router) + sitemap, robots, 404
+  components/
+    layout/               Header, DesktopNav, MobileNav, Footer, Logo
+    home/                 Hero and home page sections
+    services/             ServiceCard, ServiceSection
+    projects/             ProjectCard, ProjectFilters, ProjectsExplorer
+    gallery/              GalleryGrid, Lightbox
+    clients/              ClientLogoGrid
+    contact/              InquiryForm
+    seo/                  StructuredData (JSON-LD)
+    ui/                   Button, Container/Section, SectionHeading, PageHeader,
+                          Reveal, ServiceIcon, Icons
+  data/                   company content — site, company, services, om,
+                          projects, gallery, clients
+  lib/                    metadata helper and small utilities
+scripts/
+  generate-image-placeholders.mjs
+public/images/            logo, hero, projects, gallery, services, clients
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All company content lives in `src/data/*` — client names, locations, capacities
+and scopes are rendered from there, so content changes never require touching
+component code.
 
-## Deploy on Vercel
+## Content rules followed on this site
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Only details supplied in the company profile are published. Locations,
+  capacities and scopes appear only where they are recorded.
+- No invented certifications, awards, ratings, testimonials, revenue figures,
+  branch offices or statistics.
+- Client names are presented as **project associations**; logos appear only when
+  an official logo file is provided.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Images
+
+Every image is served through `next/image`. Paths are referenced from the data
+files, and the folder layout is documented in
+[`public/images/README.md`](public/images/README.md).
+
+While a company photograph is missing, a flat navy placeholder file exists at
+that path so the layout renders correctly. To add images:
+
+1. Drop the real photograph into the matching folder in `public/images/` using
+   the existing file name (or update the path in `src/data/*.ts`).
+2. Run `node scripts/generate-image-placeholders.mjs` after adding new image
+   paths — it creates placeholders only for files that do not exist yet and
+   never overwrites a real photograph.
+
+## Notes
+
+- The enquiry form validates on the client and then opens the visitor's email
+  application with the enquiry details addressed to the company inbox. There is
+  no backend on this site, so no data is stored and no message is claimed to
+  have been sent until the visitor sends it.
+- Scroll reveal animations use CSS scroll-driven animations, so they add no
+  JavaScript and are disabled automatically under `prefers-reduced-motion`.
+
