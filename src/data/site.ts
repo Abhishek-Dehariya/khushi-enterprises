@@ -6,6 +6,41 @@
  * offices or statistics that the company has not supplied.
  */
 
+/**
+ * Production fallback used when `NEXT_PUBLIC_SITE_URL` is missing, blank or
+ * malformed. It must stay an absolute URL: `metadataBase` in
+ * `src/app/layout.tsx` passes the resolved value to `new URL(...)`.
+ */
+const productionSiteUrl = "https://khushi-enterprises.vercel.app";
+
+/**
+ * Resolves the public site URL from `NEXT_PUBLIC_SITE_URL`.
+ *
+ * Deployment platforms can define the variable with a blank value, so an empty
+ * string must fall back as well — `??` only catches `null`/`undefined` and
+ * would let `""` reach `new URL(siteConfig.url)` during the production build.
+ * A bare domain is assumed to use `https`, and any trailing slash is removed
+ * so paths can be appended safely (`${siteConfig.url}/sitemap.xml`). Anything
+ * that still cannot be parsed as an absolute URL falls back to the production
+ * domain.
+ */
+function resolveSiteUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+
+  if (raw) {
+    try {
+      const url = new URL(
+        /^[a-z][a-z0-9+.-]*:\/\//i.test(raw) ? raw : `https://${raw}`,
+      );
+      return url.href.replace(/\/+$/, "");
+    } catch {
+      // Malformed value — fall through to the production fallback.
+    }
+  }
+
+  return productionSiteUrl;
+}
+
 export const siteConfig = {
   name: "Khushi Enterprises",
   proprietor: "Govind Singh",
@@ -18,9 +53,11 @@ export const siteConfig = {
 
   /**
    * Public site URL used for canonical URLs, sitemap and Open Graph tags.
-   * Set NEXT_PUBLIC_SITE_URL in the deployment environment.
+   * Set NEXT_PUBLIC_SITE_URL in the deployment environment; when it is
+   * missing or blank the production fallback applies, so the layout's
+   * `new URL(siteConfig.url)` always receives a valid absolute URL.
    */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: resolveSiteUrl(),
 
   contact: {
     /** Displayed exactly as provided by the company. */

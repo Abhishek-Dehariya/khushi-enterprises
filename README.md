@@ -24,6 +24,11 @@ cp .env.example .env.local
 # then set NEXT_PUBLIC_SITE_URL to the production domain
 ```
 
+If `NEXT_PUBLIC_SITE_URL` is missing, blank or malformed, `src/data/site.ts`
+falls back to `https://khushi-enterprises.vercel.app`, so the root layout's
+`metadataBase` always receives a valid absolute URL and the production build
+cannot fail on it.
+
 ## Pages
 
 | Route | Contents |
