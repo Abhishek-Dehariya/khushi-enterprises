@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { VideoBackground } from "@/components/ui/VideoBackground";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 
 export function PageHeader({
@@ -20,20 +20,8 @@ export function PageHeader({
 }) {
   return (
     <header className="relative isolate min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-end overflow-hidden bg-brand-black text-white pt-32 pb-16 lg:pb-24">
-      {/* Cinematic Full Background Image */}
-      <div className="absolute inset-0 -z-20 overflow-hidden">
-        <Image
-          src={backgroundImage}
-          alt={title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center brightness-60 contrast-110 scale-[1.02] transition-transform duration-1000"
-        />
-        {/* Multilayer gradient scrim */}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/80 to-brand-black/40" />
-        <div className="absolute inset-0 blueprint-grid opacity-30" />
-      </div>
+      {/* Cinematic Local Video Background (poster = per-page fallback image) */}
+      <VideoBackground poster={backgroundImage} />
 
       <Container className="relative z-10 max-w-[90rem]">
         {/* Minimal Breadcrumb */}
@@ -53,12 +41,12 @@ export function PageHeader({
 
         {eyebrow && <Eyebrow className="mb-6">{eyebrow}</Eyebrow>}
 
-        <h1 className="font-display text-[min(10vw,clamp(2.5rem,2rem+4.5vw,5.5rem))] font-extrabold uppercase tracking-tight text-white leading-[0.95] max-w-5xl">
+        <h1 className="font-display text-[min(10vw,clamp(2.5rem,2rem+4.5vw,5.5rem))] font-extrabold uppercase tracking-tight text-white leading-[0.95] max-w-5xl [text-shadow:0_2px_30px_rgba(5,8,12,0.65)]">
           {title}
         </h1>
 
         {description && (
-          <p className="mt-8 max-w-2xl text-lg sm:text-xl text-navy-200 leading-relaxed font-normal">
+          <p className="mt-8 max-w-2xl text-lg sm:text-xl text-navy-100 leading-relaxed font-normal [text-shadow:0_1px_16px_rgba(5,8,12,0.75)]">
             {description}
           </p>
         )}

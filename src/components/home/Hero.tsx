@@ -1,26 +1,13 @@
-import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ArrowRight, ChevronDown } from "@/components/ui/Icons";
+import { VideoBackground } from "@/components/ui/VideoBackground";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-brand-black text-white pt-32 pb-12 sm:pb-16 lg:pt-36">
-      {/* 01 — Full Viewport Cinematic Background with Subtle Zoom */}
-      <div className="absolute inset-0 -z-20 overflow-hidden">
-        <Image
-          src="/images/hero/hero-solar-field.png"
-          alt="Khushi Enterprises Solar Plant Operations and Asset Management"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center scale-[1.03] transition-transform duration-1000 ease-out"
-        />
-        {/* Layered cinematic overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/70 to-brand-black/35" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-brand-black/40 to-transparent" />
-        <div className="absolute inset-0 blueprint-grid opacity-30 pointer-events-none" />
-      </div>
+    <section className="relative isolate min-h-screen flex flex-col justify-between overflow-hidden bg-brand-black text-white pt-32 pb-12 sm:pb-16 lg:pt-36">
+      {/* 01 — Full Viewport Cinematic Video Background */}
+      <VideoBackground poster="/images/hero/hero-solar-field.png" />
 
       {/* Main Hero Narrative */}
       <Container className="relative z-10 flex-1 flex flex-col justify-center max-w-[92rem] py-12">
@@ -32,7 +19,7 @@ export function Hero() {
           </div>
 
           {/* Monumental Headline */}
-          <h1 className="font-display text-[min(10vw,clamp(2.75rem,2rem+5.5vw,6.5rem))] font-extrabold uppercase tracking-tight text-white leading-[0.92]">
+          <h1 className="font-display text-[min(10vw,clamp(2.75rem,2rem+5.5vw,6.5rem))] font-extrabold uppercase tracking-tight text-white leading-[0.92] [text-shadow:0_2px_30px_rgba(5,8,12,0.65)]">
             KEEPING <br />
             SOLAR ASSETS <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-navy-100 to-solar-400">
@@ -41,7 +28,7 @@ export function Hero() {
           </h1>
 
           {/* Supporting Statement */}
-          <p className="mt-8 max-w-2xl text-lg sm:text-xl lg:text-2xl text-navy-200 font-normal leading-relaxed">
+          <p className="mt-8 max-w-2xl text-lg sm:text-xl lg:text-2xl text-navy-100 font-normal leading-relaxed [text-shadow:0_1px_16px_rgba(5,8,12,0.75)]">
             Solar O&amp;M and Asset Management focused on reliable operations, performance monitoring and long-term asset value.
           </p>
 
