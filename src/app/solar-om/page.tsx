@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { VideoBackground } from "@/components/ui/VideoBackground";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight, Check, Phone } from "@/components/ui/Icons";
 import {
@@ -36,19 +37,8 @@ export default function SolarOmPage() {
   return (
     <div className="flex flex-col bg-brand-black text-white">
       {/* 01 — FULL-SCREEN CINEMATIC HERO */}
-      <section className="relative min-h-[85vh] lg:min-h-screen flex flex-col justify-end overflow-hidden pt-36 pb-16 lg:pb-24">
-        <div className="absolute inset-0 -z-20 overflow-hidden">
-          <Image
-            src={omImages.fieldInspection.src}
-            alt={omImages.fieldInspection.alt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center contrast-110 brightness-60 scale-[1.02]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/75 to-brand-black/30" />
-          <div className="absolute inset-0 blueprint-grid opacity-30 pointer-events-none" />
-        </div>
+      <section className="relative isolate min-h-[85vh] lg:min-h-screen flex flex-col justify-end overflow-hidden pt-36 pb-16 lg:pb-24">
+        <VideoBackground poster={omImages.fieldInspection.src} />
 
         <Container className="relative z-10 max-w-[94rem]">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-md text-solar-400 font-mono text-xs uppercase tracking-[0.25em] mb-8">

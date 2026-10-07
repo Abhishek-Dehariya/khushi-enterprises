@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { VideoBackground } from "@/components/ui/VideoBackground";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight, Check } from "@/components/ui/Icons";
 import { serviceGroups } from "@/data/services";
@@ -14,19 +15,8 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col bg-brand-black text-white">
       {/* 01 — Full Bleed Cinematic Header */}
-      <section className="relative min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-end overflow-hidden pt-36 pb-16 lg:pb-24">
-        <div className="absolute inset-0 -z-20 overflow-hidden">
-          <Image
-            src="/images/services/solar-operation-maintenance.png"
-            alt="Khushi Enterprises Engineering Services"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center contrast-110 brightness-60 scale-[1.02]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/75 to-brand-black/30" />
-          <div className="absolute inset-0 blueprint-grid opacity-30 pointer-events-none" />
-        </div>
+      <section className="relative isolate min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-end overflow-hidden pt-36 pb-16 lg:pb-24">
+        <VideoBackground poster="/images/services/solar-operation-maintenance.png" />
 
         <Container className="relative z-10 max-w-[94rem]">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-solar-400 font-semibold mb-6">
