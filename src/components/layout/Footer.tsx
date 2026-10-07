@@ -63,7 +63,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Brand Identity */}
           <div className="lg:col-span-5 space-y-6">
-            <Logo tone="dark" />
+            <Logo />
             <p className="text-sm text-navy-300 max-w-md leading-relaxed">
               Khushi Enterprises is an engineering firm focused on Solar O&M & Asset Management, supported by installation, electrical, fabrication and civil capabilities across Central India.
             </p>
