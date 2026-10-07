@@ -13,7 +13,7 @@ that do not exist yet and never overwrites a real photograph.
 
 | Folder | Used for |
 | --- | --- |
-| `logo/` | The official logo file, if you want to use it instead of the drawn wordmark in the header and footer. |
+| `logo/` | The official logo (`khushi-enterprises-logo.png`) — used in the header, footer and browser favicon. |
 | `hero/` | The home page hero image (`hero-solar-field.png`). |
 | `projects/` | One photograph per project record on the Projects page and project cards. |
 | `gallery/` | Gallery photographs, shown in the masonry grid and lightbox. |
@@ -40,4 +40,6 @@ that do not exist yet and never overwrites a real photograph.
 - Solar O&M and asset management: `src/data/om.ts`
 - Client logos: `src/data/clients.ts` (`logo` field — `null` means the
   organisation name is used as a typographic tile)
+- Header/footer logo: `src/components/layout/Logo.tsx` (the favicon at
+  `src/app/favicon.ico` is cropped from the same file)
 - Hero: `src/components/home/Hero.tsx`

@@ -10,7 +10,7 @@ export function Header() {
   return (
     <HeaderShell>
       <Container className="flex items-center justify-between gap-4 max-w-[90rem] xl:gap-6">
-        <Logo tone="dark" className="shrink-0" />
+        <Logo className="shrink-0" priority />
 
         {/* The nine-item pill nav needs ~1280px of room beside the logo and the
             CTA, so below `xl` the drawer in <MobileNav /> carries the navigation
