@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight, LinkedIn, Mail, Phone } from "@/components/ui/Icons";
+import { ArrowRight, Mail, Phone } from "@/components/ui/Icons";
 import { omExpert } from "@/data/om";
 import { mailtoHref, telHref } from "@/lib/utils";
 
@@ -71,25 +71,7 @@ export function AbhishekExpertise() {
             </p>
 
             {/* Direct Connect Grid */}
-            <div className="pt-4 grid sm:grid-cols-2 gap-4 max-w-xl">
-              <a
-                href={omExpert.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between p-4 rounded-2xl border border-ink-200 bg-ink-50/60 hover:border-solar-500 hover:bg-white transition-all shadow-sm"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-brand-black text-white flex items-center justify-center">
-                    <LinkedIn className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-ink-500 uppercase font-mono">LinkedIn</p>
-                    <p className="text-sm font-semibold text-ink-900 group-hover:text-solar-600">Connect Profile</p>
-                  </div>
-                </div>
-                <ArrowRight className="h-4 w-4 text-ink-400 group-hover:translate-x-1 transition-transform" />
-              </a>
-
+            <div className="pt-4 grid gap-4 max-w-xl">
               <a
                 href={mailtoHref(omExpert.email)}
                 className="group flex items-center justify-between p-4 rounded-2xl border border-ink-200 bg-ink-50/60 hover:border-solar-500 hover:bg-white transition-all shadow-sm"

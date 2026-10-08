@@ -62,7 +62,6 @@ export const omExpert = {
   email: "a.dehariya10@gmail.com",
   phoneDisplay: "+91 9806610010",
   phoneDial: "+919806610010",
-  linkedin: "https://www.linkedin.com/in/abhishek-dehariya/",
 } as const;
 
 /* -------------------------------------------------------------------------- */

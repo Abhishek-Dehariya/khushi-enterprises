@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
  * Client & project association grid.
  *
  * Where a real logo file is available (set in `src/data/clients.ts`) the logo is
- * displayed, de-saturated at rest and brought to full colour on hover so the
- * grid reads as one set rather than as competing brand marks. Otherwise the
- * organisation name is set as a typographic tile — the site never shows a drawn
- * or imitation logo.
+ * displayed in full colour (on a light plate against dark tiles so dark brand
+ * marks stay legible); the tile itself still reacts on hover with an accent
+ * rule wipe. Otherwise the organisation name is set as a typographic tile —
+ * the site never shows a drawn or imitation logo.
  */
 export function ClientLogoGrid({
   tone = "light",
@@ -43,13 +43,31 @@ export function ClientLogoGrid({
           />
 
           {client.logo ? (
-            <Image
-              src={client.logo.src}
-              alt={client.logo.alt}
-              width={160}
-              height={56}
-              className="h-10 w-auto object-contain grayscale opacity-75 transition-[filter,opacity] duration-300 group-hover/logo:opacity-100 group-hover/logo:grayscale-0"
-            />
+            /**
+             * Backing plate only where the tile colour would swallow the mark:
+             * dark artwork gets a white plate on dark tiles (most logos are
+             * dark-on-transparent), while a light/white mark — e.g. Linamar's
+             * header SVG — sits straight on the dark tile or gets a navy plate
+             * on light tiles. width/height come from the natural pixel size of
+             * each file (set in `src/data/clients.ts`) to reserve layout.
+             */
+            <span
+              className={cn(
+                "flex items-center justify-center rounded-lg px-4 py-3",
+                client.logo &&
+                  (client.logo.artwork === "light"
+                    ? !isDark && "bg-navy-900"
+                    : isDark && "bg-white"),
+              )}
+            >
+              <Image
+                src={client.logo.src}
+                alt={client.logo.alt}
+                width={client.logo.width}
+                height={client.logo.height}
+                className="h-auto w-auto max-h-12 max-w-[min(10rem,100%)] object-contain sm:max-h-14"
+              />
+            </span>
           ) : (
             <span
               className={cn(
