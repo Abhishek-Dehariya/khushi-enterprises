@@ -14,7 +14,7 @@ import {
 } from "@/data/om";
 import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { telHref } from "@/lib/utils";
+import { mailtoHref, telHref } from "@/lib/utils";
 
 export const metadata: Metadata = createMetadata({
   title: "Solar O&M & Asset Management | Primary Discipline",
@@ -269,8 +269,8 @@ export default function SolarOmPage() {
             {omExpert.experience} • {omExpert.focus}
           </p>
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href={omExpert.linkedin} size="lg">
-              <span>Connect on LinkedIn</span>
+            <Button href={mailtoHref(omExpert.email)} size="lg">
+              <span>Email {omExpert.email}</span>
               <ArrowRight className="h-4 w-4" />
             </Button>
             <Button href={telHref(omExpert.phoneDial)} variant="outline" size="lg" plainAnchor>

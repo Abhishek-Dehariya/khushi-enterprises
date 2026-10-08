@@ -181,6 +181,28 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "linamar",
+    client: "Linamar",
+    type: "Installation",
+    scope: ["Installation work"],
+    categories: ["Industrial"],
+    image: {
+      src: "/images/projects/linamar.png",
+      alt: "Installation work executed at Linamar",
+    },
+  },
+  {
+    slug: "becis",
+    client: "BECIS",
+    type: "Installation",
+    scope: ["Installation work"],
+    categories: ["Industrial"],
+    image: {
+      src: "/images/projects/becis.png",
+      alt: "Installation work executed at BECIS",
+    },
+  },
+  {
     slug: "cancer-hospital-gwalior",
     client: "Cancer Hospital Gwalior",
     location: "Gwalior",

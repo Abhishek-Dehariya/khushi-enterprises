@@ -82,7 +82,7 @@ export function MobileNav() {
                         onClick={() => setOpen(false)}
                         className={cn(
                           "group flex items-center justify-between py-2 text-2xl font-display font-semibold tracking-tight transition-all",
-                          isActive ? "text-solar-400 pl-2" : "text-navy-300 hover:text-white"
+                          isActive ? "text-solar-400 pl-2" : "text-white/90 hover:text-white"
                         )}
                       >
                         <span className="flex items-center gap-3">

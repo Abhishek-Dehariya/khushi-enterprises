@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { ArrowRight, LinkedIn, Mail, Phone } from "@/components/ui/Icons";
+import { Mail, Phone } from "@/components/ui/Icons";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { omExpert } from "@/data/om";
 import { mailtoHref, telHref } from "@/lib/utils";
@@ -10,11 +10,11 @@ import { mailtoHref, telHref } from "@/lib/utils";
  *
  * Introduces Abhishek Dehariya as a key technical professional associated with
  * the company's O&M and asset management capability. Only the supplied details
- * are published: name, experience, focus area, email, phone and LinkedIn — no
+ * are published: name, experience, focus area, email and phone — no
  * designation, employer history, project count or certification is claimed.
  *
- * Email and phone are real links, and the LinkedIn action is a plain anchor
- * (the shared Button handles the external target and rel attributes).
+ * Email and phone are real links (the shared Button handles the target
+ * attributes).
  */
 export function OmExpertise() {
   const contactRows = [
@@ -31,13 +31,6 @@ export function OmExpertise() {
       href: telHref(omExpert.phoneDial),
       Icon: Phone,
       external: false,
-    },
-    {
-      label: "LinkedIn",
-      value: "linkedin.com/in/abhishek-dehariya",
-      href: omExpert.linkedin,
-      Icon: LinkedIn,
-      external: true,
     },
   ] as const;
 
@@ -96,11 +89,6 @@ export function OmExpertise() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href={omExpert.linkedin} size="lg">
-                <LinkedIn className="h-4 w-4" />
-                Connect on LinkedIn
-                <ArrowRight className="h-4 w-4" />
-              </Button>
               <Button
                 href={mailtoHref(omExpert.email)}
                 variant="ghost"
